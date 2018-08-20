@@ -41,14 +41,14 @@ public class Code14_FindFirstIntersectNode {
 		//快慢指针
 		Node fast = head.next.next;   //一次走两步
 		Node slow = head.next;	//一次走一步
-		while(fast != slow) {   //固定结论：如果有环快慢指针一定会在环上相遇
+		while(fast != slow) {   //固定结论1：如果有环快慢指针一定会在环上相遇
 			if (fast.next == null || fast.next.next == null) { //快慢指针只判断快指针 只要在遍历中遇到null说明无环
 				return null;
 			}
 			fast = fast.next.next;
 			slow = slow.next;
 		}
-		fast = head; //从头开始，一次走一步。结论：一定会和slow指针相遇
+		fast = head; //结论2：此时快指针从头开始，两个指针一次走一步。一定会和slow指针相遇
 		while(fast != slow) {
 			fast = fast.next;
 			slow = slow.next;
@@ -100,7 +100,7 @@ public class Code14_FindFirstIntersectNode {
 
 		Node cur1 = null;
 		Node cur2 = null;
-		if (inLoop1 == inLoop2) {  //第二种情况：合并成一个单链表后结成一个环。和无环链表处理一样
+		if (inLoop1 == inLoop2) {  //入环点相等：第二种情况：合并成一个单链表后结成一个环。和无环链表处理一样
 			int distance = 0;
 			cur1 = head1;
 			while(cur1 != inLoop1) {

@@ -8,7 +8,7 @@ package class03;
 public class Code05_PrintMatrixSpiralOrder {
 
 	public static void SpiralOrderPrint(int[][] matrix) {
-		//左上角初试点
+		//左上角初始点
 		int tRow = 0;
 		int tCol = 0;
 		//右下角初始点

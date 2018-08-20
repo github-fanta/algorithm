@@ -1,6 +1,5 @@
 package class04;
 
-import java.awt.HeadlessException;
 import java.util.Stack;
 
 /**
@@ -81,7 +80,7 @@ public class Code_01_PreInPosTraversal {
 		
 		Stack<Node> stack = new Stack<Node>();
 		Node temp = head;
-		while(!stack.isEmpty() || temp != null) {
+		while(!stack.isEmpty() || temp != null) { //temp不为null 说明左枝全部出栈了，但右子树还有呢
 			
 			if (temp != null) {
 				stack.push(temp);

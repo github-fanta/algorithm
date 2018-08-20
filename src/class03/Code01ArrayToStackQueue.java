@@ -22,7 +22,7 @@ public class Code01ArrayToStackQueue {
 		}
 		
 		public void push(int obj) {
-			if (size > arr.length) {
+			if (size == arr.length) {
 				throw new IndexOutOfBoundsException("超出容量");
 			}
 			arr[size++] = obj;

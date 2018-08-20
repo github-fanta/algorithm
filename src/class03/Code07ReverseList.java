@@ -1,5 +1,8 @@
 package class03;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Code07ReverseList {
 
 	public static class Node{
@@ -21,6 +24,7 @@ public class Code07ReverseList {
 		}
 		return pre;
 	}
+	
 	
 	public static void main(String[] args) {
 		Node node1 = new Node(1);
