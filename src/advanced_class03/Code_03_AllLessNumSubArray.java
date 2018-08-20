@@ -28,10 +28,11 @@ public class Code_03_AllLessNumSubArray {
 				
 				R ++; //继续扩张
 			}
+			count += ((R-1) - L + 1); //R多添加了最后一个不符合的元素。L到R-1的所有子数组数量
 			if(qMin.peekFirst() == L) qMin.pollFirst();  //弹出过期最小值
 			if(qMax.peekFirst() == L) qMax.pollFirst();  //弹出过期旧最大值
-			count += ((R-1) - L + 1); //R多添加了最后一个不符合的元素。L到R-1的所有子数组数量
 			L ++;  //换一个子数组的开头
+			
 		}
 		return count;
 	}
