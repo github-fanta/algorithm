@@ -52,7 +52,7 @@ public class Code13_CopyListWithRandom {
 			temp.next.next = nextHolder;
 			temp = nextHolder;
 		}
-		//连接rand指针
+		//从头开始，连接rand指针
 		temp = head;
 		while(temp != null) {
 			temp.next.rand = temp.rand != null ? temp.rand.next : null;  //temp的rand有可能没有
@@ -66,8 +66,8 @@ public class Code13_CopyListWithRandom {
 		while(temp != null) {
 			copyTemp = temp.next;    //temp.next一定存在
 			temp.next = copyTemp.next;
+			//copyTemp.next = copyTemp.next != null ? copyTemp.next.next : null;
 			copyTemp.next = temp.next != null ? temp.next.next : null;
-			
 			temp = temp.next;
 		}
 		return copyHead;

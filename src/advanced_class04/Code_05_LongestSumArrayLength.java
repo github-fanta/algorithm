@@ -15,8 +15,8 @@ public class Code_05_LongestSumArrayLength {
 		int sum = 0;
 		for(int i = 0; i < arr.length; i++) {
 			sum += arr[i];
-			if(sumMap.get(sum) == null) sumMap.put(sum, i);  //采用原来的长度更长
-			if(sumMap.containsKey(sum - aim)) {
+			if(sumMap.get(sum) == null) sumMap.put(sum, i);  //此长度没有记录过
+			if(sumMap.containsKey(sum - aim)) { 
 				maxLen = Math.max(maxLen, i - sumMap.get(sum - aim)); //更新最长
 			}
 		}

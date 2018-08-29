@@ -20,12 +20,12 @@ public class Code08ZigZagPrintMatrix {
 		//下面/上面的点还没到终点
 		while(dCol <= endCol) {
 			printLine(matrix, tRow, tCol, dRow, dCol, fromUp);
-			if (tCol == endCol) {//上面点碰到右边界
+			if (tCol == endCol) {//上面点碰到右边界， 就往下走
 				tRow++;
 			}else{
 				tCol++; 
 			}
-			if (dRow == endRow) { //下面点碰到下边界
+			if (dRow == endRow) { //下面点碰到下边界， 就往右走
 				dCol++;
 			}else {
 				dRow++;

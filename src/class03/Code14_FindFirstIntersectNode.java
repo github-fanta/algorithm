@@ -158,17 +158,17 @@ public class Code14_FindFirstIntersectNode {
 				System.out.println(getIntersectNode(head1, head2).value);*/
 
 				// 1->2->3->4->5->6->7->4...
-				/*head1 = new Node(1);
+				head1 = new Node(1);
 				head1.next = new Node(2);
 				head1.next.next = new Node(3);
 				head1.next.next.next = new Node(4);
 				head1.next.next.next.next = new Node(5);
 				head1.next.next.next.next.next = new Node(6);
 				head1.next.next.next.next.next.next = new Node(7);
-				head1.next.next.next.next.next.next = head1.next.next.next; // 7->4
+				head1.next.next.next.next.next.next.next = head1.next.next.next; // 7->4
 
 				// 0->9->8->2...
-				head2 = new Node(0);
+				/*head2 = new Node(0);
 				head2.next = new Node(9);
 				head2.next.next = new Node(8);
 				head2.next.next.next = head1.next; // 8->2
@@ -182,7 +182,7 @@ public class Code14_FindFirstIntersectNode {
 				System.out.println(getIntersectNode(head1, head2).value);*/
 				
 				//各自成环
-				head1 = new Node(1);
+			/*	head1 = new Node(1);
 				head1.next = new Node(2);
 				head1.next.next = new Node(3);
 				head1.next.next.next = new Node(4);
@@ -196,6 +196,9 @@ public class Code14_FindFirstIntersectNode {
 				head2.next.next = new Node(8);
 				head2.next.next.next = new Node(88); 
 				head2.next.next.next.next = head2.next; // 88->9
+			
+*/			
+				System.out.println(getInLoopNode(head1).value);
 				if (getIntersectNode(head1, head2) == null) {
 					System.out.println("无相交部分");
 				}else {

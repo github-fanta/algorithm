@@ -109,7 +109,7 @@ public class Code12_ListPartition {
 			head = next;
 		}
 		//small筒和equal筒连接
-		if (sTail != null) {
+		if (sHead != null) {
 			sTail.next = eHead;
 			if (eTail == null) eTail = sTail; //防止第二个筒为空
 		}
