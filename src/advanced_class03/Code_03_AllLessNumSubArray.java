@@ -24,11 +24,11 @@ public class Code_03_AllLessNumSubArray {
 					qMax.pollLast();
 				}
 				qMax.addLast(R); //更新最大值结构
-				if(arr[qMax.getFirst()] - arr[qMin.getFirst()] > num) break; //不达标，停止扩张
+				if(arr[qMax.getFirst()] - arr[qMin.getFirst()] > num) break; //不达标，停止扩张。此时已经大了，R再往后也还是不满足，跳出，让L往右边走
 				
 				R ++; //继续扩张
 			}
-			count += ((R-1) - L + 1); //R多添加了最后一个不符合的元素。L到R-1的所有子数组数量
+			count += ((R-1) - L + 1); //while中R多加了一。L到R-1的所有子数组数量
 			if(qMin.peekFirst() == L) qMin.pollFirst();  //弹出过期最小值
 			if(qMax.peekFirst() == L) qMax.pollFirst();  //弹出过期旧最大值
 			L ++;  //换一个子数组的开头

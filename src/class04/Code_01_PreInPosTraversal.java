@@ -93,7 +93,7 @@ public class Code_01_PreInPosTraversal {
 		}
 	}
 	
-	//2.3后续非递归遍历
+	//2.3 后续非递归遍历 “左右中” -> "中右左" -> "中左右(中序)"  ——双栈解决方案
 	public static void posOrderUnRecur(Node head) {
 		if (head == null) {
 			return;
@@ -104,15 +104,34 @@ public class Code_01_PreInPosTraversal {
 		Node temp = null;
 		while(!stack1.isEmpty()) {
 			temp = stack1.pop();
+			stack2.push(temp);  //该出栈的时候不出栈而是压入另一个栈中
 			if (temp.left != null)stack1.push(temp.left);
 			if (temp.right != null)stack1.push(temp.right);
-			stack2.push(temp);  //该出栈的时候不出栈而是压入另一个栈中
 		}
 		while(!stack2.isEmpty()) {
 			System.out.println(stack2.pop().value);
 		}
 	}
 	
+	//2.3 后续非递归遍历   ——单栈解决方案
+	public static void postOrderUnRecur2(Node head) {
+		if(head == null) return;
+		Stack<Node> S = new Stack<>();
+		S.push(head);
+		Node pre = head;  //记录前一个访问的结点
+		Node cur = null;
+		while(!S.isEmpty()) {
+			cur = S.peek();
+			if(cur.left != pre  && cur.right != pre && cur.left != null) { //第一次来到根结点(不是从左右孩子返回的)
+				S.push(cur.left);
+			}else if(cur.right != pre && cur.right != null) {//第二次来到根结点(刚从左孩子返回的，不是从右孩子返回的)
+			    S.push(cur.right);
+			}else { //第三次返回到根结点
+				System.out.print(S.pop().value+" ");
+				pre = cur;
+			}
+		}
+	}
 	
 	/**
 	 * 方法3：终极方法——面向对象思维封装操作
@@ -220,8 +239,9 @@ public class Code_01_PreInPosTraversal {
 			System.out.println("先序："); preOrderUnRecur(head);System.out.println(); 
 			System.out.println("中序："); inOrderUnRecur(head); System.out.println(); 
 			System.out.println("后序："); posOrderUnRecur(head);System.out.println(); 
+			System.out.println("后序2："); postOrderUnRecur2(head);System.out.println(); 
 			
-			System.out.println("============ooMethod=============");
+			System.out.println("============OOMethod=============");
 			System.out.println("先序："); preOrderWithOperation(head); System.out.println();
 			System.out.println("中序："); inOrderWithOperation(head);  System.out.println();
 			System.out.println("后序："); posOrderWithOperation(head); System.out.println();

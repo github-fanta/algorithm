@@ -1,7 +1,8 @@
 package advanced_class08;
 /**
+ * 【数组三联问题】其2：
  * 给定一个数组arr，全是正数；一个整数aim，求累加和等
-         于aim的，最长子数组，要求额外空间复杂度O(1)，时间
+         于aim的，最长子数组的长度，要求额外空间复杂度O(1)(所以不能用map了，只能用双指针窗口结构)，时间
          复杂度O(N)
  * @author liq
  *
@@ -51,7 +52,7 @@ public class Code_04_LongestSumSubArrayLengthInPositiveArray {
 
 	public static void main(String[] args) {
 		int len = 20;
-		int k = 15;
+		int k = 4;
 		int[] arr = generatePositiveArray(len);
 		printArray(arr);
 		System.out.println(getMaxLength(arr, k));

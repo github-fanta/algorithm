@@ -18,11 +18,11 @@ public class Code_02_Less_Money {
 			heap.add(i);
 		}
 		int sum = 0;
-		int cutNum = 0;
+		int cutNum = 0; //分割所需要的铜板数目
 		while(heap.size() > 1) {
 			sum = heap.poll() + heap.poll();  //把最小的两个拿出来
 			heap.add(sum);					  //求和后再放进去
-			cutNum ++;
+		    cutNum += sum;
 		}
 		return cutNum;
 	}

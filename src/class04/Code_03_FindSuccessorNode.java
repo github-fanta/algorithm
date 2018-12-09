@@ -57,7 +57,7 @@ public class Code_03_FindSuccessorNode {
 		}
 		if (head.left != null) {	//左子树不为空，向下找左子树最右的结点
 			return getRightMost(head.left);
-		}else {	//左子树为空，想上找，看当前节点是哪个结点最左的结点
+		}else {	//左子树为空，想上找，看当前节点是哪个结点的右子树的最左的结点
 			Node parent = head.parent;
 			while(parent != null && parent.right != head) {
 				head = parent;

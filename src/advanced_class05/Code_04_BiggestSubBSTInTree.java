@@ -35,7 +35,7 @@ public class Code_04_BiggestSubBSTInTree {
 		}
 		if(maxBSTSize == 0) {  //没有进入上面判断体内，说明子树有水分（搜索二叉树不是整个子树）
 			maxBSTSize = Math.max(leftInfo.maxBSTSize, rightInfo.maxBSTSize);
-			subBSTHead = leftInfo.maxBSTSize > rightInfo.maxBSTSize ? leftInfo.subBSTHead : rightInfo.subBSTHead;//选多的子树的头结点		
+			subBSTHead = maxBSTSize == leftInfo.maxBSTSize ? leftInfo.subBSTHead : rightInfo.subBSTHead;//选多的子树的头结点		
 		} 
 
 		return new ReturnType(maxBSTSize, subBSTHead, 

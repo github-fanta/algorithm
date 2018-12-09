@@ -11,7 +11,7 @@ public class Code_03_Print_All_Subsquences {
 			System.out.println(curStr);
 			return;
 		}
-		printAllSubsquence(str, i+1, curStr+" ");    //沿途收集信息
+		printAllSubsquence(str, i+1, curStr+"   ");    //沿途收集信息
 		printAllSubsquence(str, i+1, curStr+str[i]);
 	}
 	

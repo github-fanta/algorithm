@@ -32,7 +32,7 @@ public class Code_08_Is_Sum {
 		dp[arr.length][aim] = true;
 		
 		for(int i = arr.length - 1; i >= 0; i--) {
-			for(int j = 0; j <= sum; j++) {
+			for(int j = 0; j <= sum; j++) { //每一行 从最左边到最右边
 				dp[i][j] = dp[i+1][j];
 				if(j + arr[i] <= sum) {
 					dp[i][j] = dp[i][j] || dp[i + 1][j + arr[i]];
@@ -62,7 +62,7 @@ public class Code_08_Is_Sum {
 	}
 	
 	public static void main(String[] args) {
-		int[] arr = { 1, 4, 8, 20};
+		int[] arr = { 1, 30, 8, 20};
 		int aim = 31;
 		System.out.println(isSum(arr, 0, 0, aim));
 		System.out.println(isSumDp(arr, aim));

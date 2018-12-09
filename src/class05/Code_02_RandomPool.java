@@ -36,14 +36,14 @@ public class Code_02_RandomPool{
 			if (size == 0) {
 				return null;
 			}
-			return map2.get((int)  (Math.random() * size));
+			return map2.get((int)  (Math.random() * size));  // 0 ~ size -1共size个
 		}
 		
 		//删除delete()
 		public void delete(E element) {
 			if (map1.containsKey(element)) {
-				int lastIndex = --size;
-				E lastE = map2.get(lastIndex); //最后一个元素
+				int lastIndex = --size;        //获取最后一个序号  =size - 1; size--;
+				E lastE = map2.get(lastIndex); //获取最后一个元素
 				
 				Integer deleteIndex = map1.get(element);//获取删除元素对应索引
 				//用最后一个值覆盖此值

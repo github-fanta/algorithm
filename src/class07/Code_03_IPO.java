@@ -1,13 +1,21 @@
 package class07;
 /**
  * 做项目（贪心） LeetCode 502 IPO
+ * 输入：
+ *  参数1，正数数组costs 
+ *  参数2，正数数组profits 
+ *  参数3，正数k，表示你不能并行、只能串行的最多做k个项目
+ *  参数4，正数m，m表示你初始的资金
+	costs[i]表示i号项目的花费 
+	profits[i]表示i号项目在扣除花费之后还能挣到的钱(利润)
+	说明：你每做完一个项目，马上获得的收益，可以支持你去做下一个 项目。
+    输出： 你最后获得的最大钱数。
  * @author liq
  *
  */
 import java.util.PriorityQueue;
 
 public class Code_03_IPO {
-
 	public static class Node{
 		int cost;
 		int profit;

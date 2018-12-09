@@ -10,12 +10,12 @@ public class Code_07_MinPath {
 	//暴力递归
 	public static int minPathRec(int[][] m, int curRow, int curCol) {
 		if(curRow == m.length - 1 && curCol == m[0].length - 1) {
-			return m[m.length - 1][m[0].length - 1]; //返回有下角值
+			return m[m.length - 1][m[0].length - 1]; //返回右下角值
 		}
-		if(curRow == m.length - 1) {
+		if(curRow == m.length - 1) {//走到最后一行，接下来只能往右走
 			return m[curRow][curCol] + minPathRec(m, curRow, curCol + 1);
 		}
-		if(curCol == m[0].length - 1) {
+		if(curCol == m[0].length - 1) {//走到最后一列，接下来只能往下走
 			return m[curRow][curCol] + minPathRec(m, curRow + 1, curCol);
 		}
 		

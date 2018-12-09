@@ -1,7 +1,8 @@
 package advanced_class08;
 /**
+ * 【数组三联问题】其3：
  * 给定一个数组arr，值可正，可负，可0；一个整数aim，求累加
- * 和小于等于aim的，最长子数组，要求时间复杂度O(N)
+ * 和小于等于aim的，最长子数组的长度，要求时间复杂度O(N)
  * @author liq
  *
  */
@@ -35,8 +36,7 @@ public class Code_05_LongestSubarrayLessSumAwesomeSolution {
 				R = ends[R] + 1; //R放在下一个要扩出去的块的第一个元素上
 			}
 			maxLen = Math.max(maxLen, R - start); //更新最大跨度  （R-1） - start +　１
-			if(R > start) sum -= arr[start]; //R > start说明R没有被绊倒(向右扩出去了)，说明以此start开头的符合条件的子区间存在， 将第一个元素(start位置)移出窗口。
-			
+			if(R > start) sum -= arr[start]; //如果开始L==R，窗口此时为L->R-1位置，L位置的数根本就没有进入窗口，不能随便减 start位置的数字   R > start说明R没有被绊倒(向右扩出去了)，说明以此start开头的符合条件的子区间存在， 将第一个元素(start位置)移出窗口。
 			//defensive——如果没有扩动咋办
 			R = Math.max(R, start + 1);  //保持R在start右边
 		}

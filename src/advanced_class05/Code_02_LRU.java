@@ -31,35 +31,23 @@ public class Code_02_LRU {
 		    this.tail = null;
 		}
 		
-		public void addNode(Node<K, V> node){
-			if(node == null) return;
+		//添加尾
+		public void addNode(Node<K, V> newNode){
+			if(newNode == null) return;
 			if(head == null) {
-				this.head = node;
-				this.tail = node;
+				this.head = newNode;
+				this.tail = newNode;
 			}else {
-				this.tail.next = node;
-				node.pre = this.tail;
-				this.tail = node;
+				this.tail.next = newNode;
+				newNode.pre = this.tail;
+				this.tail = newNode;
 			}
 		}
-		
-		public void moveNodeToTail(Node<K, V> node) {
-			if(this.tail == node) return;
-			if(node == this.head) { //移动的是首结点,pre是null
-				this.head = node.next;
-				this.head.pre = null;
-			}else {//移动的是其他节点
-				node.next = null;
-				this.tail.next = node;
-				node.pre = this.tail;
-				this.tail = node;
-			}
-		}
-		
+		//删除头
 		public Node<K, V> removeHead() {
 			if(this.head == null) return null;
 			Node<K, V> result = this.head;
-			if(this.head == this.tail) {  //就省了一个了
+			if(this.head == this.tail) {  //就剩了一个了，和一般情况有区别
 				this.head = null;
 				this.tail = null;
 			}else {
@@ -69,6 +57,24 @@ public class Code_02_LRU {
 			}
 			return result;
 		}
+		
+		//提到尾
+		public void moveNodeToTail(Node<K, V> node) {
+			if(this.tail == node) return;
+			if(node == this.head) { //移动的是首结点,pre是null
+				this.head = node.next;
+				this.head.pre = null;
+			}else {//移动的是其他节点
+				node.pre.next = node.next;
+				node.next.pre = node.pre;
+			}
+			node.pre = this.tail;
+			this.tail.next = node;
+			node.next = null;
+			this.tail = node;
+		}
+		
+		
 	}
 	
 	
@@ -78,6 +84,9 @@ public class Code_02_LRU {
 		private LRULinkedList<K, V> linkedList;
 		private int capcity;
 		public LRUCache(int initSize) {
+			if(initSize < 1) {
+				throw new RuntimeException("shoud be more than 0");
+			}
 			this.keyNodeMap = new HashMap<>();
 			this.linkedList = new LRULinkedList<>();
 			this.capcity = initSize;
@@ -87,13 +96,14 @@ public class Code_02_LRU {
 			if(keyNodeMap.containsKey(key)) {          //包含此key
 				Node<K, V> node = keyNodeMap.get(key); //map中取出Node，修改值
 				node.value = value;
-				linkedList.moveNodeToTail(node);
+				linkedList.moveNodeToTail(node);   //设置完值后，将其移到高优先级的尾
 			}else {//不包含此key
 				Node<K, V> newNode = new Node<>(key, value);
 				keyNodeMap.put(key, newNode);
-				this.linkedList.addNode(newNode);
-				if(keyNodeMap.size() == this.capcity + 1 ) {
-					removeMostUnusedCache();
+				this.linkedList.addNode(newNode);   //新加结点都在尾部
+				if(keyNodeMap.size() == this.capcity + 1 ) {  //加完检验是否超过最大容量，超过 移除头
+					Node<K, V> head = this.linkedList.removeHead();
+					keyNodeMap.remove(head.key);
 				}
 				
 			}
@@ -106,10 +116,6 @@ public class Code_02_LRU {
 				return resultNode;
 			}
 			return null;
-		}
-		private void removeMostUnusedCache() {
-			Node<K, V> head = this.linkedList.removeHead();
-			keyNodeMap.remove(head.key);
 		}
 	}
 	

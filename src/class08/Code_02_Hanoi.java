@@ -17,7 +17,7 @@ public class Code_02_Hanoi {
 	}
 	
 	public static void main(String[] args) {
-		hanoi(10,"左","右","中");
+		hanoi(3,"左","右","中");
 	}
 	
 }

@@ -77,13 +77,19 @@ public class Code_07_IsBSTAndCBT {
 		Node temp = null;
 		while(!queue.isEmpty()) {
 			temp = queue.poll();
-			if (temp.left != null && temp.right == null) return false; //违反情况一：左孩子为空，右孩子不为空
-			if (leafStatus == true && (temp.left != null || temp.right != null)) return false; //违反情况二：开启叶结点状态，temp竟然右孩子
+			//if (temp.left != null && temp.right == null) return false; //违反情况一：左孩子为空，右孩子不为空
+			//if (leafStatus == true && (temp.left != null || temp.right != null)) return false; //违反情况二：开启叶结点状态，temp竟然有孩子
 			//不违反，但是出现违反趋势的，开启叶结点状态
-			if (temp.right == null) leafStatus = true;   //左孩子不为空，右孩子为空已经被上面排除了，进此判断的只能是左孩子为空，右孩子也为空
+			if(temp == null) {
+				if(leafStatus == true) return false;   //为空的时候，叶结点状态已经开启，说明违反规则
+				else continue;
+			}
+			if (temp.left == null || temp.right == null) leafStatus = true;   //左孩子不为空，右孩子为空已经被上面排除了，进此判断的只能是左孩子为空，右孩子也为空
 			//放心地层次遍历
-			if (temp.left != null) queue.offer(temp.left);
-			if (temp.right != null) queue.offer(temp.right);
+			//if (temp.left != null) 
+				queue.offer(temp.left);
+			//if (temp.right != null) 
+				queue.offer(temp.right);
 		}
 		return true;
 	}

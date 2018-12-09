@@ -27,7 +27,7 @@ public class Code_07_ExpressionCompute {
 			if(str[i] >= '0' && str[i] <= '9') {
 				preNum = preNum*10 + str[i++] - '0';
 			}else if(str[i] != '(') { //不是数字，不是左括号，那肯定就是+-*/了
-				addNum(que, preNum);//在压入此次运算符之前，会先把上一次的乘除计算了。
+				addNum(que, preNum);//在压入此数字之前，如果栈顶是*或者除/ 会先把上一次的乘除和这个数计算了。
 				preNum = 0;
 				que.addLast(String.valueOf(str[i++]));//把此次运算符压入栈中
 			}else {

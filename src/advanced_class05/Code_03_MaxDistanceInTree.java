@@ -25,10 +25,8 @@ public class Code_03_MaxDistanceInTree {
 		if(head == null) return new ReturnType(0, 0);
 		ReturnType leftInfo = process(head.left);
 		ReturnType rightInfo = process(head.right);
-		int case1 = leftInfo.maxDistance;
-		int case2 = rightInfo.maxDistance;
 		int includeHeadDist = leftInfo.depth + rightInfo.depth + 1;
-		int resultDist = Math.max(Math.max(case1, case2), includeHeadDist);
+		int resultDist = Math.max(Math.max(leftInfo.maxDistance, rightInfo.maxDistance), includeHeadDist);
 		return new ReturnType(resultDist, Math.max(leftInfo.depth, rightInfo.depth) + 1);
 	}
 	

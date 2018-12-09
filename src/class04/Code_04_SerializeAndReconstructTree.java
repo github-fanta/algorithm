@@ -108,7 +108,7 @@ public class Code_04_SerializeAndReconstructTree {
 		}
 		return head;
 	}
-	//通过层次遍历序列化的字符串获得所有结点的一个队列valueQ
+	//通过层次遍历序列化的字符串，获得所有结点的一个队列valueQ
 	private static Queue<Node> getQueueByLevelStr(String levelStr){
 		
 		Queue<Node> valueQ = new LinkedList<Node>();

@@ -24,7 +24,7 @@ public class Code_08_CompleteTreeNodeNumber {
 	private static int countNode(Node head, int curDepth, int DEPTH) {
 
 		if(curDepth == DEPTH) return 1; //触底返回1
-		int rTreeHeight = getCBTDepth(head.right); //右子树的深度等于右子树的高度
+		int rTreeHeight = getCBTDepth(head.right); //右子树的深度(右子树左边界的深度)等于右子树的高度
 		if (curDepth+rTreeHeight == DEPTH) { //右子树触底，说明左子树肯定是满二叉数
 			return (1 << rTreeHeight) + countNode(head.right, curDepth+1, DEPTH); //此时右子树的高度等于左子树的高度
 		}else { //右子树没有触底，但是此时右子树一定是满二叉树
@@ -38,7 +38,7 @@ public class Code_08_CompleteTreeNodeNumber {
 			depth ++;
 			head = head.left;
 		}
-		return depth - 1;  //为了兼容head为null时的情况
+		return depth - 1;  //head遍历到null，多加了一次，也为了兼容head为null时的情况
 	}
 	
 	public static void main(String[] args) {

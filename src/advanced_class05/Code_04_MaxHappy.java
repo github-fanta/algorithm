@@ -31,7 +31,7 @@ public class Code_04_MaxHappy {
 		for(int i = 0; i < head.nexts.size(); i++) {  //让上级选择下级来或者不来
 			ReturnData nextData = process( head.nexts.get(i));
 			lai_huo += nextData.bu_lai_huo;  //本节点要是来了，加上下级的不来时的活跃度
-			bu_lai_huo += Math.max(nextData.bu_lai_huo, nextData.lai_huo);//本节点要是来了，下级结点可以来，可以不来
+			bu_lai_huo += Math.max(nextData.bu_lai_huo, nextData.lai_huo);//本节点要是不来了，下级结点可以来，可以不来
 		}
 		return new ReturnData(lai_huo, bu_lai_huo);  //交给上级去抉择
 	}

@@ -57,7 +57,7 @@ public class Code_01_TrieTree {
 				}
 				node = node.paths[route];
 			}
-			return node.endNum;                     //找到结束位置的点，将其数量++
+			return node.endNum;                     //找到结束字符的结点，返回其数量
 		}
 		
 		//删除某个word

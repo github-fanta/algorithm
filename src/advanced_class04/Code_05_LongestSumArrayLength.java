@@ -3,6 +3,11 @@ package advanced_class04;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * 【数组三联问题】其1：数组可正，可负，可0.求最长子数组和为aim的长度
+ * @author liq
+ *
+ */
 
 
 public class Code_05_LongestSumArrayLength {
@@ -10,7 +15,7 @@ public class Code_05_LongestSumArrayLength {
 	public static int maxLength(int[] arr, int aim) {
 		if(arr == null || arr.length == 0) return 0;
 		Map<Integer, Integer> sumMap = new HashMap<Integer,Integer>();
-		sumMap.put(0, -1);
+		sumMap.put(0, -1);  //前i项目和  与  位置i的映射
 		int maxLen = 0;
 		int sum = 0;
 		for(int i = 0; i < arr.length; i++) {
